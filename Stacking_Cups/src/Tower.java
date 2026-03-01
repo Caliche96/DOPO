@@ -1,8 +1,8 @@
 public class Tower {
-    private int width;
-    private int maxHeight;
+    private static int width;
+    private final int maxHeight;
     public Tower(int width, int maxHeight) {
-        this.width = width;
+        Tower.width = width;
         this.maxHeight = maxHeight;
     }
 
