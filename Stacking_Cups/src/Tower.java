@@ -143,7 +143,6 @@ public class Tower {
      * Si hay elementos con el mismo número, las tazas deben ir debajo de las tapas.
      * El numero menor queda en la cima y el numero mayor en la base.
      */
-    
     public void orderTower() {
         // Ordenar por número de mayor a menor, y si hay empate, las tazas van debajo de las tapas
     }
@@ -223,10 +222,12 @@ public class Tower {
      * @return
      */
     public boolean ok() {
-        return ok;
+        return ok;      //Este ya está implementado, no modificarlo
     }
 
 
+
+    //Métodos auxiliares. No borrar!!
     public boolean cupExists(int i) {
         return findItem("Cup", i) != -1;
     }
