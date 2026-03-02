@@ -2,7 +2,7 @@
  * Representa un elemento que se puede apilar en la torre, como una taza o una tapa.
  */
 
-public class StackingItem{
+public abstract class StackingItem{
     private int number;
     private int height;
     private String color;
