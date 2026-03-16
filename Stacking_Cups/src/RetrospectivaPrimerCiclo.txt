@@ -6,16 +6,31 @@
     4. Realizar un archivo con la clase Tower refiriendo los métodos que nos estan pidiendo en el archivo
     5. Iniciar un archivo de Astah para ir viendo las relaciones que van a tener las clases
     6. Verificar los requisitos de usabilidad de los métodos
-    7. 
-
-
-
-
+    7. Implementar las clases del proyecto de Shapes
+    8. Combinar el proyecto Shapes con el proyecto de Stacking items
+    9. Realizar el diagrama de clases de acuerdo como tenemos implementado el código
+    10. Realizar los diagramas de secuencia de los 9 metodos pedidos en este Ciclo
 
 2. ¿Cuál es el estado actual del proyecto en términos de mini-ciclos? ¿por qué?
+    El estado según los miniciclos es que esta completo, segun nuestro plan de acción, hemos hecho todo lo que nos habiamos propuesto para tener completo la mayoria de cosas
+
 3. ¿Cuál fue el tiempo total invertido por cada uno de ustedes? (Horas/Hombre)
+    Carlos Rojas: Aproximadamente 20 Horas
+    Nicolas Bernal: Aprox 14 Horas  
 4. ¿Cuál consideran fue el mayor logro? ¿Por qué?
+    El mayor logro fue el saber como funciona el problema de Stacking cups.
+    Puesto que es un proyecto del cual no hemos oido hablar y no teniamos idea alguna de como abordarlo.
+
 5. ¿Cuál consideran que fue el mayor problema técnico? ¿Qué hicieron para resolverlo?
+    El mayor problema técnico fue realizar los diagramas de secuencia dado que no teniamos un dominio muy bueno en el Astah.
+
 6. ¿Qué hicieron bien como equipo? ¿Qué se comprometen a hacer para mejorar los resultados?
+    La división de trabajo, nos comprometemos a tener más responsabilidad en la entrega del trabajo en los tiempos estipulados.
+
 7. Considerando las prácticas XP incluidas en los laboratorios. ¿cuál fue la más útil? ¿por qué?
+    Realizamos la práctica de Pair-Programming, en el ámbito de que cuando uno de los dos se sentía frustrado al momento de realizar código la otra persona complementaba.
+    Hemos visto que a lo largo del diseño del problema hemos aplicado el Simple Design, aunque no lo sentimos como lo más útil.
+
 8. ¿Qué referencias usaron? ¿Cuál fue la más útil? Incluyan citas con estándares adecuados.
+    Chat GPT como tutor para saber como era el problema de Stacking Cups y como lo podiamos abordar.
+    Notas de Clase, para la creacion e implementacion de los diagramas de secuencia
