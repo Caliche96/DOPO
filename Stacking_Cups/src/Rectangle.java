@@ -23,9 +23,10 @@ public class Rectangle{
     /**
      * Create a new rectangle at default position with default color.
      */
-    public Rectangle(){
-        height = 30;
-        width = 40;
+    public Rectangle(int perimetro){
+        int size= perimetro/4;
+        height= size;
+        width= size;
         xPosition = 70;
         yPosition = 15;
         color = "magenta";
@@ -197,13 +198,50 @@ public class Rectangle{
     
     
     /**
-     * 
+     * Aumenta o disminuye el tamaño del cuadrado
+     * @params char
+     * @returns void
      */
     public void zoom(char z){
-        if (z=="AUMENTA"){
-            height= height+height;
-            width= width+width;
-            perimeter();
+        double factor;
+        if(z=='+'){
+            factor=2.0;
+        }else if(z=='-'){
+            factor=0.5;
+        }else{
+            return;
+        }
+        
+        int newHeight= (int)Math.round(height*factor);
+        int newWidth= (int)Math.round(height*factor);
+        
+        changeSize(newHeight,newWidth);
+    }
+    
+    
+    /**
+     * Mueve el rectangulo en diagonal cayendo
+     * @params 
+     */
+    public void walk(int times) {
+    int steps = Math.abs(times);
+    int dx = (times >= 0) ? 20 : -20; // Acá se caerá hacia la izquierda o derecha
+
+    for (int i = 0; i < steps; i++) {
+        erase();
+        xPosition += dx;
+        yPosition += 20;  // Aca hará el salto de caída x veces
+        draw();
+        }
+    }
+    
+    /**
+     * Verifica si el rectangulo es un cuadrado
+     */
+    public boolean esCuadrado(){
+        return width==height;
     }
 }
+
+
 
