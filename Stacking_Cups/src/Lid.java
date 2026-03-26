@@ -3,6 +3,11 @@
  * La altura de la tapa es 1cm
  */
 public class Lid extends StackingItem {
+
+    private int height;
+    private Rectangle shape;
+    private boolean visible;
+
     /**
      * Crea una tapa con el número y color dados
      * La altura es siempre 1 cm
@@ -23,4 +28,17 @@ public class Lid extends StackingItem {
     public String getType() {
         return "Lid";
     }
+
+    public Rectangle getShape() {
+        return shape;
+    }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
 }
