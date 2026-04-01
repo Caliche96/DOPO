@@ -7,10 +7,7 @@
  * @version 1.0 - 2026-1
  */
 public class Cup extends StackingItem {
-
-    private int height;
     private Rectangle shape;
-    private boolean visible;
 
     /**
      * Crea una taza con el número y color dados
@@ -21,6 +18,8 @@ public class Cup extends StackingItem {
 
     public Cup(int number, String color) {
         super(number, 2 * number - 1, color);
+        this.shape = new Rectangle(getHeight() * 2);
+        shape.changeColor(color);
     }
 
     /**
@@ -33,15 +32,8 @@ public class Cup extends StackingItem {
         return "Cup";
     }
 
+    @Override
     public Rectangle getShape() {
         return shape;
-    }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
     }
 }

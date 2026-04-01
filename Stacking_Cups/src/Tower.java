@@ -9,6 +9,7 @@ public class Tower {
     private int maxHeight;
     private ArrayList<StackingItem> items;
     private boolean ok;
+    private boolean isVisible;
     private HashMap<Integer, String> colorMap;
     private static final String[] COLORS = {
             "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white",
@@ -27,6 +28,7 @@ public class Tower {
         this.maxHeight = maxHeight;
         this.items = new ArrayList<>();
         this.ok = true;
+        this.isVisible = false;
         this.colorMap = new HashMap<>();
     }
 
@@ -222,14 +224,20 @@ public class Tower {
      * Muestra la torre.
      */
     public void makeVisible() {
-        System.out.println("Making the tower visible.");
+        isVisible = true;
+        for (StackingItem item : items) {
+            item.getShape().makeVisible();
+        }
     }
 
     /**
      * Oculta la torre.
      */
     public void makeInvisible() {
-        System.out.println("Making the tower invisible.");
+        isVisible = false;
+        for (StackingItem item : items) {
+            item.getShape().makeInvisible();
+        }
     }
 
     /**
@@ -248,8 +256,9 @@ public class Tower {
         return ok; // Este ya está implementado, no modificarlo
     }
 
+    // --------------------------------------
     // Métodos auxiliares. No borrar!!
-
+    // --------------------------------------
     /**
      * Devuelve true si existe una taza con el número dado.
      * 

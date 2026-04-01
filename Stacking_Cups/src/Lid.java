@@ -4,9 +4,7 @@
  */
 public class Lid extends StackingItem {
 
-    private int height;
     private Rectangle shape;
-    private boolean visible;
 
     /**
      * Crea una tapa con el número y color dados
@@ -16,7 +14,9 @@ public class Lid extends StackingItem {
      * @param color  El color de la tapa, debe coinicdir con el de su taza.
      */
     public Lid(int number, String color) {
-        super(number, 1, color); // La tapa siempre mide 1cm
+        super(number, 1, color);
+        this.shape = new Rectangle(getHeight() * 4);
+        shape.changeColor(color);
     }
 
     /**
@@ -29,16 +29,8 @@ public class Lid extends StackingItem {
         return "Lid";
     }
 
+    @Override
     public Rectangle getShape() {
         return shape;
     }
-
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
 }

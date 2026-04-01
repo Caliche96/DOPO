@@ -56,4 +56,12 @@ public abstract class StackingItem {
      * @return El tipo del elemento.
      */
     public abstract String getType();
+
+    /**
+     * Devuelve la figura Rectangle asociada al elemento
+     * CAda subclase define su propia representación visual
+     * 
+     * @return El rectangle que representa visualmente este elemento
+     */
+    public abstract Rectangle getShape();
 }

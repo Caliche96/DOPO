@@ -1,6 +1,6 @@
 # Stacking Cups — Registro de Cambios
 
-> **Autores:** Nicolas Bernal & Carlos Rojas  
+> **Autores:** Carlos Rojas  
 > **Versión:** 1.0 — 2026-1  
 > **Última actualización:** 2026-03-26
 
