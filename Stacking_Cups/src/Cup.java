@@ -36,4 +36,13 @@ public class Cup extends StackingItem {
     public Rectangle getShape() {
         return shape;
     }
+
+    @Override
+    public void setCovered(boolean covered) {
+        if (covered) {
+            shape.changeColor("black");
+        } else {
+            shape.changeColor(getColor());
+        }
+    }
 }

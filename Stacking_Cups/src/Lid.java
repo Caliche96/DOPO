@@ -33,4 +33,15 @@ public class Lid extends StackingItem {
     public Rectangle getShape() {
         return shape;
     }
+
+    // DE ESTA MANERA SABEMOS QUE LA TAPA YA ESTA TAPANDO UNA COPA
+
+    @Override
+    public void setCovered(boolean covered) {
+        if (covered) {
+            shape.changeColor("black");
+        } else {
+            shape.changeColor(getColor());
+        }
+    }
 }

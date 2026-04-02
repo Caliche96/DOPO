@@ -64,4 +64,12 @@ public abstract class StackingItem {
      * @return El rectangle que representa visualmente este elemento
      */
     public abstract Rectangle getShape();
+
+    /**
+     * Cambia la apariencia del elemento según si esta tapado o no
+     * CAda subclase defina como luce visualmente al estar tapada
+     * 
+     * @param covered true si el elemento esta tapado, false si no lo esta
+     */
+    public abstract void setCovered(boolean covered);
 }

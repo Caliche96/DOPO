@@ -33,6 +33,28 @@ public class Tower {
     }
 
     /**
+     * Método de Ciclo II
+     * Crea una torre con tazas numeradas del 1 al número dado.
+     * No incluye tapas. El ancho y alto se calculan automáticamente.
+     * Ej: cips=4 crea las tazas 1,2,3 y 4 de alturas 1,3,5 y 7
+     * 
+     * @param cups Número de tazas a crear
+     */
+    public Tower(int cups) {
+        this.width = cups * 2;
+        this.maxHeight = 0;
+        this.items = new ArrayList<>();
+        this.ok = true;
+        this.isVisible = false;
+        this.colorMap = new HashMap<>();
+        for (int i = 1; i <= cups; i++) {
+            Cup cup = new Cup(i, assignColor(i));
+            items.add(cup);
+            this.maxHeight += cup.getHeight();
+        }
+    }
+
+    /**
      * Agrega una taza con el numero dado a la cima de la torre.
      * Falla si la taza ya existe o no cabe
      * 
@@ -170,6 +192,52 @@ public class Tower {
     }
 
     /**
+     * Método de Ciclo II
+     * Elimina todas las tazas y tapas de la torre.
+     */
+    public void swap(String[] o1, String[] o2) {
+        int index1 = findItem(o1[0], Integer.parseInt(o1[1]));
+        int index2 = findItem(o2[0], Integer.parseInt(o2[1]));
+        if (index1 == -1 || index2 == -1) {
+            ok = false;
+            return;
+        }
+        boolean covered1 = isCovered(index1);
+        boolean covered2 = isCovered(index2);
+        if (covered1 && covered2) {
+            swapCovered(index1, index2);
+        } else if (covered1) {
+            swapCoveredWithSingle(index1, index2);
+        } else if (covered2) {
+            swapCoveredWithSingle(index2, index1);
+        } else {
+            Collections.swap(items, index1, index2);
+        }
+        ok = true;
+    }
+
+    /**
+     * Tapa todas las tazas que tienen su tapa en la torre.
+     * La tapa se coloca inmediatamente encima de su taza.
+     * Si la taza ya está tapada, no se realiza ningún cambio.
+     */
+    public void cover() {
+        for (int i = 0; i < items.size(); i++) {
+            StackingItem item = items.get(i);
+            if (!item.getType().equals("Cup"))
+                continue;
+            int lidIndex = findItem("Lid", item.getNumber());
+            if (lidIndex == -1 || isCovered(i))
+                continue;
+            StackingItem lid = items.remove(lidIndex);
+            items.add(i + 1, lid);
+            item.setCovered(true);
+            i++;
+        }
+        ok = true;
+    }
+
+    /**
      * Devuelve la altura actual de los elementos apilados.
      * 
      * @return Altura en cm.
@@ -218,6 +286,32 @@ public class Tower {
             }
         }
         return grid;
+    }
+
+    /**
+     * Consulta que intercambio de dos elementos reduciria más la altura de la torre
+     * Los objetos se identifican por su tipo y número.
+     * Ejemplo: {"cup", "4"} y {"lid", "4"}
+     * 
+     * @return Par de identificadfores del intercambio que más reduce la altura, o
+     *         null si ningún intercambio la reduce.
+     */
+    public String[][] swapToReduce() {
+        String[][] bestSwap = null;
+        int bestHeight = height();
+        for (int i = 0; i < items.size(); i++) {
+            for (int j = i + 1; j < items.size(); j++) {
+                Collections.swap(items, i, j);
+                int newHeight = height();
+                if (newHeight < bestHeight) {
+                    bestHeight = newHeight;
+                    bestSwap = buildSwapResult(i, j);
+                }
+                Collections.swap(items, i, j);
+            }
+        }
+        ok = bestSwap != null;
+        return bestSwap;
     }
 
     /**
@@ -348,6 +442,73 @@ public class Tower {
             }
         }
         return result;
+    }
+
+    // Métodos Auxiliares Ciclo II
+    // Métodos Auxiliares para llevar a cabo el swap
+
+    /**
+     * Verifica si un elemento está tapado
+     * 
+     * @param index indice del elemento
+     * @return true si está tapado, false en caso contrario
+     */
+    private boolean isCovered(int index) {
+        if (index + 1 >= items.size()) {
+            return false;
+        }
+        StackingItem current = items.get(index);
+        StackingItem next = items.get(index + 1);
+        return current.getType().equals("Cup") && next.getType().equals("Lid")
+                && current.getNumber() == next.getNumber();
+    }
+
+    /**
+     * Intercambia dos elementos tapados
+     * 
+     * @param index1 indice del primer elemento
+     * @param index2 indice del segundo elemento
+     */
+    private void swapCovered(int index1, int index2) {
+        StackingItem cup1 = items.get(index1);
+        StackingItem lid1 = items.get(index1 + 1);
+        StackingItem cup2 = items.get(index2);
+        StackingItem lid2 = items.get(index2 + 1);
+        items.set(index1, cup2);
+        items.set(index1 + 1, lid2);
+        items.set(index2, cup1);
+        items.set(index2 + 1, lid1);
+    }
+
+    /**
+     * Intercambia un elemento tapado con uno no tapado
+     * 
+     * @param coveredIndex indice del elemento tapado
+     * @param singleIndex  indice del elemento no tapado
+     */
+    private void swapCoveredWithSingle(int coveredIndex, int singleIndex) {
+        StackingItem cup = items.get(coveredIndex);
+        StackingItem lid1 = items.get(coveredIndex + 1);
+        StackingItem single = items.get(singleIndex);
+        items.set(coveredIndex, single);
+        items.set(coveredIndex + 1, cup);
+        items.set(singleIndex, lid1);
+    }
+
+    /**
+     * Construye el resultado del swap
+     * 
+     * @param i indice del primer elemento
+     * @param j indice del segundo elemento
+     * @return resultado del swap
+     */
+    private String[][] buildSwapResult(int i, int j) {
+        StackingItem item1 = items.get(i);
+        StackingItem item2 = items.get(j);
+        return new String[][] {
+                { item1.getType().toLowerCase(), String.valueOf(item1.getNumber()) },
+                { item2.getType().toLowerCase(), String.valueOf(item2.getNumber()) }
+        };
     }
 
 }
