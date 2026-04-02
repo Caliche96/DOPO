@@ -1,3 +1,5 @@
+package src;
+
 import java.util.*;
 
 public class Tower {
@@ -6,15 +8,16 @@ public class Tower {
     private ArrayList<StackingItem> items;
     private boolean ok;
     private HashMap<Integer, String> colorMap;
-    private static final String[] COLORS={
-        "red","blue","green","yellow","orange","purple","pink","brown","black","white",
-        "cyan","magenta","lime","maroon","navy","olive","teal","violet","indigo","gray",
-        "silver","gold","bronze","coral","crimson","fuchsia","khaki","lavender","salmon","tan"
+    private static final String[] COLORS = {
+            "red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "black", "white",
+            "cyan", "magenta", "lime", "maroon", "navy", "olive", "teal", "violet", "indigo", "gray",
+            "silver", "gold", "bronze", "coral", "crimson", "fuchsia", "khaki", "lavender", "salmon", "tan"
     };
 
     /**
      * Crea una torre con el ancho y la altura dados
-     * @param width El ancho de la torre
+     * 
+     * @param width     El ancho de la torre
      * @param maxHeight La altura máxima de la torre
      */
     public Tower(int width, int maxHeight) {
@@ -27,115 +30,117 @@ public class Tower {
 
     /**
      * Agrega una taza con el numero dado a la cima de la torre.
-     * @param i  numero de la raza(tambien es su altura)
+     * 
+     * @param i numero de la taza(tambien es su altura)
      */
     public void pushCup(int i) {
         if (cupExists(i)) {
-            ok=false;
+            ok = false;
             return;
         }
-        String color = assignColor(i);
+        String color = assignColor(i); // No esta demás para no perdernos el como se le asigna el color
         Cup cup = new Cup(i, color);
-        if (height() +cup.getHeight() >maxHeight) {
-            ok=false;
+        if (height() + cup.getHeight() > maxHeight) {
+            ok = false;
             return;
         }
         items.add(cup);
-        ok=true;
+        ok = true;
     }
 
     /**
      * Elimina la taza de la cima de la torre.
      */
     public void popCup() {
-        if (items.isEmpty()){
-            ok=false;
+        if (items.isEmpty()) {
+            ok = false;
             return;
         }
         StackingItem topItem = items.get(items.size() - 1);
-        //No usar instance OF
+        // No usar instance OF
         if (!topItem.getType().equals("Cup")) {
-            ok=false;
+            ok = false;
             return;
         }
         items.remove(topItem);
-        ok=true;
+        ok = true;
     }
-
 
     /***
      * Elimina una taza específica de la torre.
+     * 
      * @param i
      */
     public void removeCup(int i) {
         int index = findItem("cup", i);
         if (index == -1) {
-            ok=false;
+            ok = false;
             return;
         }
-        if(index+1 <items.size()){
+        if (index + 1 < items.size()) {
             StackingItem aboveItem = items.get(index + 1);
             if (aboveItem.getType().equals("Lid")) {
-                ok=false;
+                ok = false;
                 return;
             }
         }
         items.remove(index);
-        ok=true;
+        ok = true;
     }
 
     /**
      * Agrega una tapa con el numero dado a la cima de la torre
      * solo puede haber una tapa por numero
+     * 
      * @param i
      */
     public void pushLid(int i) {
         if (lidExists(i)) {
-            ok=false;
+            ok = false;
             return;
         }
         String color = assignColor(i);
         Lid lid = new Lid(i, color);
-        if (height() +lid.getHeight() >maxHeight) {
-            ok=false;
+        if (height() + lid.getHeight() > maxHeight) {
+            ok = false;
             return;
         }
         items.add(lid);
-        ok=true;
+        ok = true;
     }
 
     /**
      * Elimina la tapa de la cima de la torre.
      */
     public void popLid() {
-        if (items.isEmpty()){
-            ok=false;
+        if (items.isEmpty()) {
+            ok = false;
             return;
         }
         StackingItem topItem = items.get(items.size() - 1);
-        //No usar instance OF
+        // No usar instance OF
         if (!topItem.getType().equals("Lid")) {
-            ok=false;
+            ok = false;
             return;
         }
         items.remove(topItem);
-        ok=true;
+        ok = true;
     }
-
 
     /**
      * Elimina una tapa específica de la torre.
+     * 
      * @param i
      */
     public void removeLid(int i) {
         int index = findItem("Lid", i);
         if (index == -1) {
-            ok=false;
+            ok = false;
             return;
         }
-        
+
         items.remove(index);
-        ok=true;
+        ok = true;
     }
 
     /**
@@ -144,9 +149,9 @@ public class Tower {
      * El numero menor queda en la cima y el numero mayor en la base.
      */
     public void orderTower() {
-        // Ordenar por número de mayor a menor, y si hay empate, las tazas van debajo de las tapas
+        // Ordenar por número de mayor a menor, y si hay empate, las tazas van debajo de
+        // las tapas
     }
-
 
     /**
      * Reverses the tower by rearranging the cups and lids in the opposite order.
@@ -155,34 +160,35 @@ public class Tower {
         System.out.println("Reversing the tower.");
     }
 
-
     /**
      * Returns the current height of the tower.
+     * 
      * @return
      */
     public int height() {
-        int total =0;
+        int total = 0;
         for (StackingItem item : items) {
             total += item.getHeight();
         }
         return total;
     }
 
-
     /**
      * Returns the number of cups currently in the tower.
+     * 
      * @return
      */
     public int lidedCups() {
         return width;
     }
 
-
     /**
-     * Returns a 2D array representing the current arrangement of cups and lids in the tower.
+     * Returns a 2D array representing the current arrangement of cups and lids in
+     * the tower.
+     * 
      * @return
      */
-    public String[][] stackingItems(){
+    public String[][] stackingItems() {
         String[][] items = new String[maxHeight][width];
         for (int i = 0; i < maxHeight; i++) {
             for (int j = 0; j < width; j++) {
@@ -192,14 +198,12 @@ public class Tower {
         return items;
     }
 
-
     /**
      * Makes the tower visible.
      */
     public void makeVisible() {
         System.out.println("Making the tower visible.");
     }
-
 
     /**
      * Makes the tower invisible.
@@ -208,7 +212,6 @@ public class Tower {
         System.out.println("Making the tower invisible.");
     }
 
-
     /**
      * Exits the tower and performs any necessary cleanup.
      */
@@ -216,18 +219,16 @@ public class Tower {
         System.out.println("Exiting the tower.");
     }
 
-
     /**
      * Indica si la útlima operación realizada en la torre fue exitosa o no.
+     * 
      * @return
      */
     public boolean ok() {
-        return ok;      //Este ya está implementado, no modificarlo
+        return ok; // Este ya está implementado, no modificarlo
     }
 
-
-
-    //Métodos auxiliares. No borrar!!
+    // Métodos auxiliares. No borrar!!
     public boolean cupExists(int i) {
         return findItem("Cup", i) != -1;
     }
@@ -254,7 +255,5 @@ public class Tower {
         colorMap.put(number, color);
         return color;
     }
-
-
 
 }

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=StackingItem
+comment0.text=\r\n\ Representa\ un\ elemento\ que\ se\ puede\ apilar\ en\ la\ torre,\ como\ una\ taza\ o\ una\ tapa.\r\n
+comment1.params=number\ height\ color
+comment1.target=StackingItem(int,\ int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ para\ crear\ un\ nuevo\ elemento\ de\ apilamiento\ con\ el\ n\u00FAmero,\ altura\ y\ color\ especificados.\r\n\ @param\ number\ El\ n\u00FAmero\ del\ elemento.\r\n\ @param\ height\ La\ altura\ del\ elemento.\r\n\ @param\ color\ El\ color\ del\ elemento.\r\n
+comment2.params=
+comment2.target=int\ getNumber()
+comment2.text=\r\n\ Devuelve\ el\ n\u00FAmero\ del\ elemento\ de\ apilamiento.\r\n\ @return\ El\ n\u00FAmero\ del\ elemento.\r\n
+comment3.params=
+comment3.target=int\ getHeight()
+comment3.text=\r\n\ Devuelve\ la\ altura\ del\ elemento\ de\ apilamiento.\r\n\ @return\ La\ altura\ del\ elemento.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getColor()
+comment4.text=\r\n\ Devuelve\ el\ color\ del\ elemento\ de\ apilamiento.\r\n\ @return\ El\ color\ del\ elemento.\r\n
+comment5.params=
+comment5.target=java.lang.String\ getType()
+comment5.text=\r\n\ Devuelve\ el\ tipo\ del\ elemento\ de\ apilamiento.\r\n\ @return\ El\ tipo\ del\ elemento.\r\n
+numComments=6

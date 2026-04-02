@@ -1,3 +1,5 @@
+package src;
+
 /**
  * Representa un elemento que se puede apilar en la torre, como una taza o una tapa.
  */
