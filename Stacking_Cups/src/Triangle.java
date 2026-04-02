@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 package src;
 
+=======
+>>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
 import java.awt.*;
 
 /**
