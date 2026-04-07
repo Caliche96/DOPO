@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-package src;
-
-=======
 /**
  * Represents a cup in the Stacking Items simulator.
  * Each cup has a unique number identifier, a height of (2i-1) cm,
@@ -10,7 +6,6 @@ package src;
  * @author Nicolas Bernal & Carlos Rojas
  * @version 1.0 - 2026-1
  */
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
 public class Cup extends StackingItem {
     private Rectangle shape;
 
@@ -36,9 +31,6 @@ public class Cup extends StackingItem {
     public String getType() {
         return "Cup";
     }
-<<<<<<< HEAD
-}
-=======
 
     @Override
     public Rectangle getShape() {
@@ -54,4 +46,3 @@ public class Cup extends StackingItem {
         }
     }
 }
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971

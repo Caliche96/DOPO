@@ -1,4 +1,4 @@
-package src;
+import java.util.*;
 
 /**
  * Representa un elemento que se puede apilar en la torre, como una taza o una
@@ -57,13 +57,9 @@ public abstract class StackingItem {
      * 
      * @return El tipo del elemento.
      */
-<<<<<<< HEAD
     public String getType() {
         return "StackingItem";
     }
-}
-=======
-    public abstract String getType();
 
     /**
      * Devuelve la figura Rectangle asociada al elemento
@@ -81,4 +77,3 @@ public abstract class StackingItem {
      */
     public abstract void setCovered(boolean covered);
 }
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971

@@ -1,4 +1,3 @@
-package src;
 
 import java.util.*;
 
@@ -58,14 +57,9 @@ public class Tower {
 
     /**
      * Agrega una taza con el numero dado a la cima de la torre.
-<<<<<<< HEAD
-     * 
-     * @param i numero de la taza(tambien es su altura)
-=======
      * Falla si la taza ya existe o no cabe
      * 
      * @param i numero de la taza
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public void pushCup(int i) {
         if (cupExists(i)) {
@@ -92,10 +86,6 @@ public class Tower {
             return;
         }
         StackingItem topItem = items.get(items.size() - 1);
-<<<<<<< HEAD
-        // No usar instance OF
-=======
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
         if (!topItem.getType().equals("Cup")) {
             ok = false;
             return;
@@ -106,14 +96,9 @@ public class Tower {
 
     /***
      * Elimina una taza específica de la torre.
-<<<<<<< HEAD
-     * 
-     * @param i
-=======
      * Falla si la taza no existe o si hay una tapa encima de la taza
      * 
      * @param i el número de la taza a eliminar
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public void removeCup(int i) {
         int index = findItem("cup", i);
@@ -121,18 +106,9 @@ public class Tower {
             ok = false;
             return;
         }
-<<<<<<< HEAD
-        if (index + 1 < items.size()) {
-            StackingItem aboveItem = items.get(index + 1);
-            if (aboveItem.getType().equals("Lid")) {
-                ok = false;
-                return;
-            }
-=======
         if (index + 1 < items.size() && items.get(index + 1).getType().equals("Lid")) {
             ok = false;
             return;
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
         }
         items.remove(index);
         ok = true;
@@ -141,14 +117,9 @@ public class Tower {
     /**
      * Agrega una tapa con el numero dado a la cima de la torre
      * solo puede haber una tapa por numero
-<<<<<<< HEAD
-     * 
-     * @param i
-=======
      * Falla si la tapa ya existe o no cabe
      * 
      * @param i el número de la tapa a agregar
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public void pushLid(int i) {
         if (lidExists(i)) {
@@ -185,14 +156,11 @@ public class Tower {
 
     /**
      * Elimina una tapa específica de la torre.
-<<<<<<< HEAD
      * 
      * @param i
-=======
-     * Falla si la tapa no existe o si hay una taza debajo de la tapa
+     *          Falla si la tapa no existe o si hay una taza debajo de la tapa
      * 
      * @param i el número de la tapa a eliminar
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public void removeLid(int i) {
         int index = findItem("Lid", i);
@@ -211,14 +179,9 @@ public class Tower {
      * Solo incluye los elementos que quepan en la torre.
      */
     public void orderTower() {
-<<<<<<< HEAD
-        // Ordenar por número de mayor a menor, y si hay empate, las tazas van debajo de
-        // las tapas
-=======
         ArrayList<StackingItem> orderedItems = sortedByNumber(false);
         items = trimToHeight(orderedItems);
         ok = true;
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
     }
 
     /**
@@ -231,12 +194,6 @@ public class Tower {
         ok = true;
     }
 
-<<<<<<< HEAD
-    /**
-     * Returns the current height of the tower.
-     * 
-     * @return
-=======
     /**
      * Método de Ciclo II
      * Elimina todas las tazas y tapas de la torre.
@@ -287,7 +244,6 @@ public class Tower {
      * Devuelve la altura actual de los elementos apilados.
      * 
      * @return Altura en cm.
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public int height() {
         int total = 0;
@@ -298,27 +254,6 @@ public class Tower {
     }
 
     /**
-<<<<<<< HEAD
-     * Returns the number of cups currently in the tower.
-     * 
-     * @return
-     */
-    public int lidedCups() {
-        return width;
-    }
-
-    /**
-     * Returns a 2D array representing the current arrangement of cups and lids in
-     * the tower.
-     * 
-     * @return
-     */
-    public String[][] stackingItems() {
-        String[][] items = new String[maxHeight][width];
-        for (int i = 0; i < maxHeight; i++) {
-            for (int j = 0; j < width; j++) {
-                items[i][j] = "Cup " + (i * width + j);
-=======
      * Retorna los números de las tazas tapadas por su tapa
      * Ordenados de menor a mayor.
      * 
@@ -329,7 +264,6 @@ public class Tower {
         for (int i = 0; i < items.size() - 1; i++) {
             if (items.get(i).getType().equals("Cup") && items.get(i + 1).getType().equals("Lid")) {
                 result.add(items.get(i).getNumber());
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
             }
         }
         Collections.sort(result);
@@ -340,8 +274,6 @@ public class Tower {
         return arr;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Retorna los elementos apilados de base a cima
      * Cada entrada es {"cup" o "lid", "<numero>"} en minusculas.
@@ -359,7 +291,6 @@ public class Tower {
         return grid;
     }
 
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
     /**
      * Consulta que intercambio de dos elementos reduciria más la altura de la torre
      * Los objetos se identifican por su tipo y número.
@@ -416,19 +347,12 @@ public class Tower {
     /**
      * Indica si la útlima operación realizada en la torre fue exitosa o no.
      * 
-<<<<<<< HEAD
      * @return
-=======
-     * @return true si la última operación fue exitosa, false en caso contrario
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
      */
     public boolean ok() {
         return ok; // Este ya está implementado, no modificarlo
     }
 
-<<<<<<< HEAD
-    // Métodos auxiliares. No borrar!!
-=======
     // --------------------------------------
     // Métodos auxiliares. No borrar!!
     // --------------------------------------
@@ -438,7 +362,6 @@ public class Tower {
      * @param i el número de la taza
      * @return true si existe la taza, false en caso contrario
      */
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
     public boolean cupExists(int i) {
         return findItem("Cup", i) != -1;
     }
@@ -485,8 +408,6 @@ public class Tower {
         return color;
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Construye una lista ordenada de todos los elementos actuales.
      * Orden descendente(menor a mayor); si reversed es true, ascendente.
@@ -593,5 +514,4 @@ public class Tower {
         };
     }
 
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
 }

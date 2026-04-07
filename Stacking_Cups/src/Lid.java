@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-package src;
-
-=======
 /**
  * Representa una tapa que se pude apilar en la torre.
  * La altura de la tapa es 1cm
  */
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
 public class Lid extends StackingItem {
 
     private Rectangle shape;
@@ -33,9 +28,6 @@ public class Lid extends StackingItem {
     public String getType() {
         return "Lid";
     }
-<<<<<<< HEAD
-}
-=======
 
     @Override
     public Rectangle getShape() {
@@ -53,4 +45,3 @@ public class Lid extends StackingItem {
         }
     }
 }
->>>>>>> 596a0adb08a3526b8e24f786e3ffca7b8b830971
